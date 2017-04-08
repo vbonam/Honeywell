@@ -1,0 +1,24 @@
+package TestScripts;
+
+import org.testng.annotations.Test;
+
+import CommonLibraries.CommonHelper;
+import SupportLibraries.ComplexReportFactory;
+import SupportLibraries.SeleniumHelper;
+
+public class ValidateDateandTimeDisplayedonHomePage extends SeleniumHelper{
+	
+	/*
+	 * Author: Team2 
+	 * Date: 04/08/2017
+	 * TC Description: Validate Date and Time Displayed on Home Page
+	 * Comments:
+	 * Revision History: 
+	 */	
+	
+  @Test
+  public void ValidateDateandTimeDisplayed() throws Exception{
+	  logger = ComplexReportFactory.getTest();	  
+	  CommonHelper.login_into_application(inputData);
+  }
+}

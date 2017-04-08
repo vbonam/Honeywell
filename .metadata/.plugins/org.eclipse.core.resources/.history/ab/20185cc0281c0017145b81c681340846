@@ -1,0 +1,47 @@
+package TestScripts;
+
+import java.util.Map;
+
+import org.testng.annotations.Test;
+
+import CommonLibraries.CommonHelper;
+import PageObjects.HomePage;
+import PageObjects.NewsLetterPage;
+import SupportLibraries.ComplexReportFactory;
+import SupportLibraries.ExcelHelper;
+import SupportLibraries.SeleniumHelper;
+
+public class ValidateNewsLetterSection extends SeleniumHelper{
+	
+	/*
+	 * Author: Team2 
+	 * Date: 04/08/2017
+	 * TC Description: Validate Date and Time Displayed on Home Page
+	 * Comments:
+	 * Revision History: 
+	 */	
+	
+  @Test
+  public void ValidateNewsLetter() throws Exception{
+	  logger = ComplexReportFactory.getTest();	
+	  Map<String, String> inputData = ExcelHelper.GetData("2");
+	  CommonHelper.login_into_application(inputData);
+	  driver.findElement(HomePage.newsletter_button).click();
+	  
+	  String sVal1 = driver.findElement(NewsLetterPage.yes_no_togglebtn).getCssValue("color");
+	  String sVal2 = driver.findElement(NewsLetterPage.yes_no_togglebtn).getAttribute("style");
+	  Thread.sleep(5000);
+	  System.out.println(driver.findElement(NewsLetterPage.no_togglebtn).isDisplayed());
+	  System.out.println(driver.findElement(NewsLetterPage.yes_togglebtn).isDisplayed());
+	  driver.findElement(NewsLetterPage.yes_no_togglebtn).click();
+	  Thread.sleep(5000);
+	  String sVal3 = driver.findElement(NewsLetterPage.yes_no_togglebtn).getCssValue("color");
+	  String sVal4 = driver.findElement(NewsLetterPage.yes_no_togglebtn).getAttribute("style");
+	  
+	  
+	  System.out.println(sVal1);
+	  System.out.println(sVal2);
+	  System.out.println(sVal3);
+	  System.out.println(sVal4);
+  }
+}

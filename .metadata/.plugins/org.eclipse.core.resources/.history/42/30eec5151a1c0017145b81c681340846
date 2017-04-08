@@ -1,0 +1,25 @@
+package CommonLibraries;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import PageObjects.CommonObjects;
+import SupportLibraries.SeleniumHelper;
+
+public class CommonHelper extends SeleniumHelper {
+	
+	/*
+	 * Author: Team2
+	 * Date: 
+	 * Description: This is class contains common methods to navigate to different tabs and validations  
+	 *  	
+	 */
+	
+
+	public static void gotoHomePage(){
+		driver.findElement(CommonObjects.home_tab).click();
+		ValidateBrowserReady();
+	}
+	
+	
+	
+}

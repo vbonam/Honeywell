@@ -1,0 +1,47 @@
+package TestScripts;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+import CommonLibraries.CommonHelper;
+import PageObjects.HomePage;
+import SupportLibraries.ComplexReportFactory;
+import SupportLibraries.ExcelHelper;
+import SupportLibraries.SeleniumHelper;
+
+public class ValidateBookingsSection extends SeleniumHelper{
+	
+	/*
+	 * Author: Team2 
+	 * Date: 04/08/2017
+	 * TC Description: Validate Date and Time Displayed on Home Page
+	 * Comments:
+	 * Revision History: 
+	 */	
+	
+  
+
+@Test
+  public void Validate_BookingsSection() throws Exception{
+	  logger = ComplexReportFactory.getTest();	
+	  Map<String, String> inputData = ExcelHelper.GetData("3");
+	  CommonHelper.login_into_application(inputData);
+	  driver.findElement(HomePage.bookings_button).click();
+	  ArrayList CntList = new ArrayList();
+	  int iRowCnt = driver.findElements(By.xpath("(//div[@id='bookings']/div[@class='row'])")).size(); 
+	  for(int i=1;i<=iRowCnt;i++){
+		  int iStartCntTemp = driver.findElements(By.xpath("(//div[@id='bookings']/div[@class='row'])[1]/div[1]/span[1]/i")).size();
+		   CntList.add(iStartCntTemp);
+	  }
+	  HashSet hotelsSet = new HashSet(CntList);
+	  Object[] arrhotelsSet;
+	  hotelsSet.toArray(arrhotelsSet);
+	  for(int i=0;i<arrhotelsSet.length;i++){
+		  System.out.println(arrhotelsSet[i].toString());
+	  }
+  }
+}

@@ -1,0 +1,20 @@
+package PageObjects;
+
+import org.openqa.selenium.By;
+
+
+public class CommonObjects {
+
+	/*
+	 * Author: Team2
+	 * Date: 
+	 * Description: This is class contains locators for common objects/elements  
+	 *  	
+	 */
+	
+	
+	public static By currency_dropdown = By.id("currency");
+	
+	
+	
+}

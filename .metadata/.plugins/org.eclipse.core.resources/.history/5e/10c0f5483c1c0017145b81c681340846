@@ -1,0 +1,59 @@
+package TestScripts;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
+
+import CommonLibraries.CommonHelper;
+import PageObjects.HotelsPage;
+import SupportLibraries.ComplexReportFactory;
+import SupportLibraries.ExcelHelper;
+import SupportLibraries.SeleniumHelper;
+
+public class ValidateHotelsSection extends SeleniumHelper{
+	
+	/*
+	 * Author: Team2 
+	 * Date: 04/08/2017
+	 * TC Description: Validate Date and Time Displayed on Home Page
+	 * Comments:
+	 * Revision History: 
+	 */	
+	
+  @Test
+  public void Validate_HotelsSection() throws Exception{
+	  logger = ComplexReportFactory.getTest();	
+	  Map<String, String> inputData = ExcelHelper.GetData("4");
+	  CommonHelper.login_into_application(inputData);
+	  //driver.navigate().to(HomePage.hotels_menu);
+	  JavaScriptExecutor objJS = (driver)JavaScriptExecutor;
+	  
+	  
+	  ValidateBrowserReady();
+	  driver.findElement(HotelsPage.location_txt).sendKeys(inputData.get("LOCATION"));
+	  Thread.sleep(3000);
+	  driver.findElement(By.xpath("//div[contains(text(),'"+inputData.get("LOCATION")+"']")).click();
+	  
+	  Calendar objCal = Calendar.getInstance();
+	  SimpleDateFormat objFormat = new SimpleDateFormat("MM/dd/y");
+      String sCheckinDate = objFormat.format(objCal.getTime());
+	  objCal.add(objCal.DATE, 1);
+	  String sCheckoutDate = objFormat.format(objCal.getTime());	  
+	  driver.findElement(HotelsPage.checkindate_txt).sendKeys(sCheckinDate);
+	  driver.findElement(HotelsPage.checkoutdate_txt).sendKeys(sCheckoutDate);
+	  driver.findElement(HotelsPage.twostars_radio).click();
+	  
+	  List<WebElement> slider = driver.findElements(By.className("slider-handle round"));
+	  
+	  Actions objActions = new Actions(driver);
+	  objActions.moveToElement(slider.get(0), 20, 100);
+  }
+}

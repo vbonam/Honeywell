@@ -1,0 +1,16 @@
+package PageObjects;
+
+import org.openqa.selenium.By;
+
+
+public class HotelsPage {
+
+	/*
+	 * Author: Team2
+	 * Date: 
+	 * Description: This is class contains locators for common objects/elements  
+	 *  	
+	 */
+	
+	
+}

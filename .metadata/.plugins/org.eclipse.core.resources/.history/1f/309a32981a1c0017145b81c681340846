@@ -1,0 +1,27 @@
+package CommonLibraries;
+
+import java.util.HashMap;
+
+import org.openqa.selenium.support.ui.Select;
+
+import PageObjects.CommonObjects;
+import SupportLibraries.SeleniumHelper;
+
+public class CommonHelper extends SeleniumHelper {
+	
+	/*
+	 * Author: Team2
+	 * Date: 
+	 * Description: This is class contains common methods to navigate to different tabs and validations  
+	 *  	
+	 */
+	
+
+	public static void login_into_application(HashMap inputData){
+		new Select(driver.findElement(CommonObjects.currency_dropdown)).selectByVisibleText(inputData.get("CURRENCY"));
+		ValidateBrowserReady();
+	}
+	
+	
+	
+}

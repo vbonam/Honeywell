@@ -1,0 +1,36 @@
+package TestScripts;
+
+import java.util.Map;
+
+import org.testng.annotations.Test;
+
+import CommonLibraries.CommonHelper;
+import PageObjects.HomePage;
+import PageObjects.NewsLetterPage;
+import SupportLibraries.ComplexReportFactory;
+import SupportLibraries.ExcelHelper;
+import SupportLibraries.SeleniumHelper;
+
+public class ValidateNewsLetterSection extends SeleniumHelper{
+	
+	/*
+	 * Author: Team2 
+	 * Date: 04/08/2017
+	 * TC Description: Validate Date and Time Displayed on Home Page
+	 * Comments:
+	 * Revision History: 
+	 */	
+	
+  @Test
+  public void ValidateNewsLetterSection() throws Exception{
+	  logger = ComplexReportFactory.getTest();	
+	  Map<String, String> inputData = ExcelHelper.GetData("2");
+	  CommonHelper.login_into_application(inputData);
+	  driver.findElement(HomePage.newsletter_button).click();
+	  String sYes = driver.findElement(NewsLetterPage.yes_togglebtn).getAttribute("style");
+	  String sNo = driver.findElement(NewsLetterPage.no_togglebtn).getAttribute("style");
+	  
+	  System.out.println(sYes);
+	  System.out.println(sNo);
+  }
+}
